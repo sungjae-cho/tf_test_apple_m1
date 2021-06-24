@@ -1,5 +1,10 @@
 import tensorflow as tf
 import time
+import os
+
+# Set CPU as available physical device
+os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
+os.environ["CUDA_VISIBLE_DEVICES"]=""
 
 mnist = tf.keras.datasets.mnist
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
@@ -24,3 +29,4 @@ model.evaluate(x_test,  y_test, verbose=2)
 
 duration = time.process_time() - t_start
 print('Processing time (sec):', duration)
+
